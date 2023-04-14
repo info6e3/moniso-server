@@ -5,6 +5,7 @@ import "time"
 type Event struct {
 	Id          int
 	Title       string
-	Date        time.Time
+	Owner       int
 	Description string
+	Date        time.Time
 }

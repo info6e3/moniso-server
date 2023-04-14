@@ -6,28 +6,15 @@ import (
 	"strings"
 )
 
-type SqlConfig struct {
-	Driver   string
-	Host     string
-	User     string
-	Password string
-	DbName   string
-	SslMode  string
-}
-
-type TelegramBotConfig struct {
-	Token string
-}
-
 type Config struct {
-	Sql         SqlConfig
-	TelegramBot TelegramBotConfig
+	Sql *SqlConfig
+	Api *Api
 }
 
 // New returns a new Config struct
 func New() Config {
 	return Config{
-		Sql: SqlConfig{
+		Sql: &SqlConfig{
 			Driver:   getEnv("SQL_DRIVER", ""),
 			Host:     getEnv("SQL_HOST", ""),
 			User:     getEnv("SQL_USER", ""),
@@ -35,8 +22,8 @@ func New() Config {
 			DbName:   getEnv("SQL_DB_NAME", ""),
 			SslMode:  getEnv("SQL_SSL_MODE", ""),
 		},
-		TelegramBot: TelegramBotConfig{
-			Token: getEnv("TELEGRAM_BOT_TOKEN", ""),
+		Api: &Api{
+			Url: getEnv("API_URL", ""),
 		},
 	}
 }

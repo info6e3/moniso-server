@@ -1,15 +1,11 @@
 package domain
 
-import (
-	"time"
-)
+import "time"
 
-type Point[T PointTypes] struct {
+type Point struct {
 	Id          int
-	Title       string
-	Owner       int
-	Type        PointType[T]
-	Value       T
-	Date        time.Time
+	Type        int
+	Value       int
 	Description string
+	Date        time.Time
 }

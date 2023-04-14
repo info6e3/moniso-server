@@ -1,6 +1,6 @@
 package domain
 
-type RefreshToken struct {
+type Token struct {
 	Id    int
 	Owner int
 	Value string

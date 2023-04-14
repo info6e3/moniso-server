@@ -15,6 +15,10 @@ func newUserService(repo repository.Users) *userService {
 	}
 }
 
+func (s *userService) Get(id int) (*domain.User, error) {
+	return s.repo.Get(id)
+}
+
 func addUser(repo repository.Users, user *domain.User) (int, error) {
 	return repo.Add(user)
 }

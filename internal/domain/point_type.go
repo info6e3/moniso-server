@@ -1,12 +1,10 @@
 package domain
 
-type PointTypes interface {
-	int | bool
-}
-
-type PointType[T PointTypes] struct {
+type PointType struct {
 	Id    int
+	Type  PType
+	Title string
 	Owner int
-	Min   T
-	Max   T
+	Min   int
+	Max   int
 }

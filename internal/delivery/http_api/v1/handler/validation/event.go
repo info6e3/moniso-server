@@ -2,20 +2,22 @@ package validation
 
 import (
 	"moniso-server/internal/domain"
+	"time"
 )
 
-func User(user *domain.User) error {
-	if user == nil {
+func Event(event *domain.Event) error {
+	if event == nil {
 		return domain.NewAppError("Ошибка валидации")
 	}
-	if user.Login == "" {
-		return domain.NewAppError("Ошибка валидации: не указан логин")
+	if event.Title == "" {
+		return domain.NewAppError("Ошибка валидации: не указано название")
 	}
-	if user.Password == "" {
-		return domain.NewAppError("Ошибка валидации: не указан пароль")
+	if event.Owner == 0 {
+		return domain.NewAppError("Ошибка валидации: не указан владелец")
 	}
-	if user.Username == "" {
-		return domain.NewAppError("Ошибка валидации: не указан юзернейм")
+	var defaultTime = time.Time{}
+	if event.Date.String() == defaultTime.String() {
+		return domain.NewAppError("Ошибка валидации: не указана дата")
 	}
 
 	return nil

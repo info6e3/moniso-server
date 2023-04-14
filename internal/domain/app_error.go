@@ -1,4 +1,4 @@
-package services
+package domain
 
 type AppError struct {
 	msg string
